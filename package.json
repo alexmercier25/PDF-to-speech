@@ -10,8 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@adobe/pdfservices-node-sdk": "^3.4.2",
+    "@vercel/blob": "^0.21.0",
+    "convertapi": "^1.14.0",
     "nuxt": "^3.10.1",
     "openai": "^4.27.0",
+    "pdfjs": "^2.5.3",
     "primevue": "^3.48.1",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
