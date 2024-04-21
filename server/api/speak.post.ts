@@ -18,12 +18,12 @@ export default defineEventHandler(async (event) => {
   const buffer = Buffer.from(await mp3.arrayBuffer());
   await fs.promises.writeFile(speechFile, buffer);
 
-  const resp = await put("speech.mp3", buffer, {
+  const resp = await put(`${body.fileName}.mp3`, buffer, {
     access: "public",
   });
-    console.log(resp);
+  console.log(resp);
 
   return {
     ...resp,
-  }
+  };
 });

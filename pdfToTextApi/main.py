@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import fitz  # PyMuPDF
 from werkzeug.utils import secure_filename
 from openai import OpenAI
@@ -12,7 +12,7 @@ dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 app = Flask(__name__)
-CORS(app)  # CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+CORS(app) # CORS(app, origins=["http://localhost:1235"])
 
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY")
@@ -80,7 +80,9 @@ def fix_text():
     return jsonify({"responses": responses})
 
 @app.route('/upload-pdf', methods=['POST'])
+@cross_origin(origin='*')
 def upload_pdf():
+    print(request)
     # Check if the request has the file part
     if 'pdfFile' not in request.files:
         return jsonify({"error": "No file part"}), 400
