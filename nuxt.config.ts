@@ -6,4 +6,7 @@ export default defineNuxtConfig({
     /* Options */
   },
   css: ["primeicons/primeicons.css", "primeflex/primeflex.css"],
+  appConfig: {
+    pdfToTextApi: process.env.PDFTOTEXT_API
+  }
 });
